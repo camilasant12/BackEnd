@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ES">
+<head>
+    <meta charset="UTF-8">
+    <title>Clase 8</title>
+</head>
+
+<body>
+    <form action="/productos/grabar" method="POST">
+        <label>Id</label>
+        <input type="number" name="Id">
+        <label>Nombre</label>
+        <input type="text" name="Nombre">
+        <label>Precio</label>
+        <input type="text" name="Precio"><br><br>
+
+       
+        <input type="submit" value="Guardar Producto">
+    </form>
+
+    <form action="/productos/listar" method="GET">
+        <button>Ver</button>
+    </form>
+</body>
+</html>
