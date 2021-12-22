@@ -12,29 +12,63 @@ app.use(express.static('public'));
 
 //array producto
 const productos =[];
+const productoFinal =[];
+let id = 0;
+let contador = 0;
+//Función ID
+function crearId(){
+    contador = contador +1;
+    id = contador;
+    return id;
 
-
+}
+//listar todo
 routerProducto.get('/listar', (req, res)=>{
     res.json(productos)
 })
-
+//listar por ID
 routerProducto.get('/listar/:id', (req, res)=>{
-    res.json(productos.find(producto => producto.id == req.params.id))   
+    let arrFind = productos.filter(producto => producto.id == req.params.id);
+    if (arrFind.length != 0){
+        res.json(arrFind);
+    }
+    else{
+        //Mensaje no encontrado
+        arrFind.push({error:'Producto no encontrado'});
+        res.json(arrFind)
+    }
 })
-
-
-
+//Grabar y devolver producto + id
 routerProducto.post('/grabar', (req, res)=>{
-    console.log(req.body)
-    productos.push(req.body)
-    res.json(req.body);
+    crearId();
+    productos.push({producto:req.body, id:id})
+    res.json({producto:req.body, id:id});
 })
 
+//Delete
+routerProducto.delete('/delete/:id', (req, res)=>{
+    let arrFind = productos.filter(producto => producto.id != req.params.id);
+    if (arrFind.length != 0){
+        res.json(arrFind);
+    }
+    else{
+        //Mensaje no encontrado
+        arrFind.push({error:'Producto no encontrado'});
+        res.json(arrFind)
+    }
+})
 
-routerProducto.put('/grabar', (req, res)=>{
-    console.log(req.body)
-    productos.push(req.body)
-    res.json(req.body);
+//Actualizar 
+routerProducto.put('/actualizar/:id', (req, res)=>{
+    let arrFind = productos.filter(producto => producto.id == req.params.id);
+    if (arrFind.length != 0){
+        res.json(arrFind);
+    }
+    else{
+        //Mensaje no encontrado
+        arrFind.push({error:'Producto no encontrado'});
+        res.json(arrFind)
+    }
 })
 
 
