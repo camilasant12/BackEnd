@@ -23,11 +23,11 @@ function crearId(){
 
 }
 //listar todo
-routerProducto.get('/listar', (req, res)=>{
+routerProducto.get('/productos', (req, res)=>{
     res.json(productos)
 })
 //listar por ID
-routerProducto.get('/listar/:id', (req, res)=>{
+routerProducto.get('/productos/:id', (req, res)=>{
     let arrFind = productos.filter(producto => producto.id == req.params.id);
     if (arrFind.length != 0){
         res.json(arrFind);
@@ -39,14 +39,14 @@ routerProducto.get('/listar/:id', (req, res)=>{
     }
 })
 //Grabar y devolver producto + id
-routerProducto.post('/grabar', (req, res)=>{
+routerProducto.post('/productos', (req, res)=>{
     crearId();
     productos.push({producto:req.body, id:id})
     res.json({producto:req.body, id:id});
 })
 
 //Delete
-routerProducto.delete('/delete/:id', (req, res)=>{
+routerProducto.delete('/productos/:id', (req, res)=>{
     let arrFind = productos.filter(producto => producto.id != req.params.id);
     if (arrFind.length != 0){
         res.json(arrFind);
@@ -59,7 +59,7 @@ routerProducto.delete('/delete/:id', (req, res)=>{
 })
 
 //Actualizar 
-routerProducto.put('/actualizar/:id', (req, res)=>{
+routerProducto.put('/productos/:id', (req, res)=>{
     let arrFind = productos.filter(producto => producto.id == req.params.id);
     if (arrFind.length != 0){
         res.json(arrFind);
