@@ -20,7 +20,7 @@ io.on('connection', function(socket) {
         messages.push(data); // agregar mensajes a array 
         io.sockets.emit('messages', messages); //emitir a todos los clientes
     });   
-    socket.on('new-message', function(data2) {
+    socket.on('new-message2', function(data2) {
         messages2.push(data2); // agregar mensajes a array 
         io.sockets.emit('messages2', messages2); //emitir a todos los clientes
     });    

@@ -1,5 +1,6 @@
 let socket = io.connect(); 
 let socket2 = io.connect();
+let date = new Date().toISOString();
 //nombre producto
 socket.on('messages', function(data) { 
   console.log(data);
@@ -30,8 +31,9 @@ function render2(data2) {
     
     let html2 = data2.map(function(elem2, Index){ 
       return(`<div>
-              <strong style="color:blue;">${elem2.author}</strong>: 
-              <em>${elem2.text}</em> </div>`) 
+              <strong style="color:blue; font-style:bold;">${elem2.author}</strong>
+              <em style="color:red;"> [${date}]</em>: 
+              <em style="color:green;">${elem2.text}</em> </div>`) 
         }).join(" "); 
         document.getElementById('messages2').innerHTML = html2; 
 }
@@ -59,7 +61,7 @@ function addMessage2(e) {
     author: document.getElementById('username').value, 
     text: document.getElementById('texto').value
   }; 
-  socket.emit('new-message', mensaje2); // new-message es el nombre del evento (recordatorio)
+  socket.emit('new-message2', mensaje2); // new-message es el nombre del evento (recordatorio)
 
   document.getElementById('texto').value = ''
   document.getElementById('texto').focus()
