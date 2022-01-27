@@ -4,8 +4,9 @@ const knex = require('knex')(db);
 
 knex.schema.createTable('producto', table => {
     table.increments('id')
-    table.string('name')
-    table.integer('price')
+    table.string('product')
+    table.integer('precio')
+    table.string('foto')
 })
 .then(()=> console.log('tabla creada'))
 .catch((err)=>{

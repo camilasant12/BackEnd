@@ -1,6 +1,8 @@
 let socket = io.connect(); 
 let socket2 = io.connect();
 let date = new Date().toISOString();
+
+
 //nombre producto
 socket.on('messages', function(data) { 
   console.log(data);
@@ -12,10 +14,11 @@ socket2.on('messages2', function(data2) {
   render2(data2);
 });
 
-
-function render(data) { 
+ 
+function render(data ) { 
     
     let html = data.map(function(elem, Index){ 
+
       return(`
               <tr>
                 <td>${elem.product}</td>
