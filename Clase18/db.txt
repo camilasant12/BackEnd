@@ -1,0 +1,154 @@
+C:\Users\camil>mongo
+MongoDB shell version v5.0.6
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("b769c6fb-765a-4e5b-b82f-6bf200222c0a") }
+MongoDB server version: 5.0.6
+================
+Warning: the "mongo" shell has been superseded by "mongosh",
+which delivers improved usability and compatibility.The "mongo" shell has been deprecated and will be removed in
+an upcoming release.
+For installation instructions, see
+https://docs.mongodb.com/mongodb-shell/install/
+================
+---
+The server generated these startup warnings when booting:
+        2022-02-15T17:51:45.367-05:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+        2022-02-15T17:51:45.368-05:00: This server is bound to localhost. Remote systems will be unable to connect to this server. Start the server with --bind_ip <address> to specify which IP addresses it should serve responses from, or with --bind_ip_all to bind to all interfaces. If this behavior is desired, start the server with --bind_ip 127.0.0.1 to disable this warning
+---
+---
+        Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+        metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+        The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+        and anyone you share the URL with. MongoDB may use this information to make product
+        improvements and to suggest MongoDB products and deployment options to you.
+
+        To enable free monitoring, run the following command: db.enableFreeMonitoring()
+        To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+---
+> db
+test
+> use ecommerce
+switched to db ecommerce
+> db.createCollection("mensaje")
+{ "ok" : 1 }
+> db.createCollection("producto")
+{ "ok" : 1 }
+> db.producto.insert([{name:"Torta de Chocolate", precio:129},{name:"Torta de Vainilla", precio:300},{name:"Torta RedVelvet Grande", precio:3500},{name:"Muffins de Banana", precio:250},{name:"Torta de Novia 2 Pisos", precio:4800},{name:"Torta de Zanahoria", precio:2600},{name:"Helado Frutos Rojos", precio: 4200},{name:"Galleta de Chocolate", precio:900},{name:"Pan de Queso", precio: 1450},{name:"Conos", precio:120}])
+BulkWriteResult({
+        "writeErrors" : [ ],
+        "writeConcernErrors" : [ ],
+        "nInserted" : 10,
+        "nUpserted" : 0,
+        "nMatched" : 0,
+        "nModified" : 0,
+        "nRemoved" : 0,
+        "upserted" : [ ]
+})
+> db.producto.find()
+{ "_id" : ObjectId("620c35e9a179d30c118cd4d7"), "name" : "Torta de Chocolate", "precio" : 129 }
+{ "_id" : ObjectId("620c35e9a179d30c118cd4d8"), "name" : "Torta de Vainilla", "precio" : 300 }
+{ "_id" : ObjectId("620c35e9a179d30c118cd4d9"), "name" : "Torta RedVelvet Grande", "precio" : 3500 }
+{ "_id" : ObjectId("620c35e9a179d30c118cd4da"), "name" : "Muffins de Banana", "precio" : 250 }
+{ "_id" : ObjectId("620c35e9a179d30c118cd4db"), "name" : "Torta de Novia 2 Pisos", "precio" : 4800 }
+{ "_id" : ObjectId("620c35e9a179d30c118cd4dc"), "name" : "Torta de Zanahoria", "precio" : 2600 }
+{ "_id" : ObjectId("620c35e9a179d30c118cd4dd"), "name" : "Helado Frutos Rojos", "precio" : 4200 }
+{ "_id" : ObjectId("620c35e9a179d30c118cd4de"), "name" : "Galleta de Chocolate", "precio" : 900 }
+{ "_id" : ObjectId("620c35e9a179d30c118cd4df"), "name" : "Pan de Queso", "precio" : 1450 }
+{ "_id" : ObjectId("620c35e9a179d30c118cd4e0"), "name" : "Conos", "precio" : 120 }
+
+> db.mensaje.insert([{email:"empleado1@pastel.com", mensaje:"hola"},{email:"empleado2@pastel.com", mensaje:"como estas?"},{email:"empleado1@pastel.com", mensaje:"bien bien, necesito el inventario"},{email:"empleado2@pastel.com", mensaje:"listo, voy a preguntarle al gerente"},{email:"empleado3@pastel.com", mensaje:"tienes aprobación para entregar el inventario"},{email:"empleado2@pastel.com", mensaje:"ya tengo la aprobacion del gerente, mañana te envio el inventario"},{email:"empleado1@pastel.com", mensaje:"dale, lo espero, muchas gracias"},{email:"empleado2@pastel.com", mensaje:"con gusto que estes bien"},{email:"empleado1@pastel.com", mensaje:"hasta luego"},{email:"empleado2@pastel.com", mensaje:"hasta luego"}])
+BulkWriteResult({
+        "writeErrors" : [ ],
+        "writeConcernErrors" : [ ],
+        "nInserted" : 10,
+        "nUpserted" : 0,
+        "nMatched" : 0,
+        "nModified" : 0,
+        "nRemoved" : 0,
+        "upserted" : [ ]
+})
+> db.mensaje.find()
+{ "_id" : ObjectId("620c3866a179d30c118cd4e1"), "email" : "empleado1@pastel.com", "mensaje" : "hola" }
+{ "_id" : ObjectId("620c3866a179d30c118cd4e2"), "email" : "empleado2@pastel.com", "mensaje" : "como estas?" }
+{ "_id" : ObjectId("620c3866a179d30c118cd4e3"), "email" : "empleado1@pastel.com", "mensaje" : "bien bien, necesito el inventario" }
+{ "_id" : ObjectId("620c3866a179d30c118cd4e4"), "email" : "empleado2@pastel.com", "mensaje" : "listo, voy a preguntarle al gerente" }
+{ "_id" : ObjectId("620c3866a179d30c118cd4e5"), "email" : "empleado3@pastel.com", "mensaje" : "tienes aprobación para entregar el inventario" }
+{ "_id" : ObjectId("620c3866a179d30c118cd4e6"), "email" : "empleado2@pastel.com", "mensaje" : "ya tengo la aprobacion del gerente, mañana te envio el inventario" }
+{ "_id" : ObjectId("620c3866a179d30c118cd4e7"), "email" : "empleado1@pastel.com", "mensaje" : "dale, lo espero, muchas gracias" }
+{ "_id" : ObjectId("620c3866a179d30c118cd4e8"), "email" : "empleado2@pastel.com", "mensaje" : "con gusto que estes bien" }
+{ "_id" : ObjectId("620c3866a179d30c118cd4e9"), "email" : "empleado1@pastel.com", "mensaje" : "hasta luego" }
+{ "_id" : ObjectId("620c3866a179d30c118cd4ea"), "email" : "empleado2@pastel.com", "mensaje" : "hasta luego" }
+> db.producto.estimatedDocumentCount()
+10
+> db.mensaje.estimatedDocumentCount()
+10
+> db.producto.insertOne({name:"Torta de Banano", precio:870})
+{
+        "acknowledged" : true,
+        "insertedId" : ObjectId("620c3a8ba179d30c118cd4eb")
+}
+----Nombre especifico
+> db.producto.find({"name":{$eq:"Torta de Chocolate"}})
+{ "_id" : ObjectId("620c35e9a179d30c118cd4d7"), "name" : "Torta de Chocolate", "precio" : 129 }
+> db.producto.find({"precio":{$lt:1000}})
+----Menores a 1000
+{ "_id" : ObjectId("620c35e9a179d30c118cd4d7"), "name" : "Torta de Chocolate", "precio" : 129 }
+{ "_id" : ObjectId("620c35e9a179d30c118cd4d8"), "name" : "Torta de Vainilla", "precio" : 300 }
+{ "_id" : ObjectId("620c35e9a179d30c118cd4da"), "name" : "Muffins de Banana", "precio" : 250 }
+{ "_id" : ObjectId("620c35e9a179d30c118cd4de"), "name" : "Galleta de Chocolate", "precio" : 900 }
+{ "_id" : ObjectId("620c35e9a179d30c118cd4e0"), "name" : "Conos", "precio" : 120 }
+{ "_id" : ObjectId("620c3a8ba179d30c118cd4eb"), "name" : "Torta de Banano", "precio" : 870 }
+-----Entre 1000 y 3000
+> db.producto.find({$and:[{"precio":{$gte:1000}}, {"precio":{$lte:3000}}]})
+{ "_id" : ObjectId("620c35e9a179d30c118cd4dc"), "name" : "Torta de Zanahoria", "precio" : 2600 }
+{ "_id" : ObjectId("620c35e9a179d30c118cd4df"), "name" : "Pan de Queso", "precio" : 1450 }
+-----Mayores a 3000
+> db.producto.find({"precio":{$gt:3000}})
+{ "_id" : ObjectId("620c35e9a179d30c118cd4d9"), "name" : "Torta RedVelvet Grande", "precio" : 3500 }
+{ "_id" : ObjectId("620c35e9a179d30c118cd4db"), "name" : "Torta de Novia 2 Pisos", "precio" : 4800 }
+{ "_id" : ObjectId("620c35e9a179d30c118cd4dd"), "name" : "Helado Frutos Rojos", "precio" : 4200 }
+--------Tercer Menor 
+> db.producto.find({"precio":{$lt:3000}}).limit(1).skip(2)
+{ "_id" : ObjectId("620c35e9a179d30c118cd4da"), "name" : "Muffins de Banana", "precio" : 250 }
+-----Actualización de Stock
+> db.producto.updateMany({},{$set:{stock:100} ,$setOnInsert:{defaultQty:100}},{upsert:true})
+{ "acknowledged" : true, "matchedCount" : 11, "modifiedCount" : 10 }
+> db.producto.find()
+{ "_id" : ObjectId("620c35e9a179d30c118cd4d7"), "name" : "Torta de Chocolate", "precio" : 129, "stock" : 100 }
+{ "_id" : ObjectId("620c35e9a179d30c118cd4d8"), "name" : "Torta de Vainilla", "precio" : 300, "stock" : 100 }
+{ "_id" : ObjectId("620c35e9a179d30c118cd4d9"), "name" : "Torta RedVelvet Grande", "precio" : 3500, "stock" : 100 }
+{ "_id" : ObjectId("620c35e9a179d30c118cd4da"), "name" : "Muffins de Banana", "precio" : 250, "stock" : 100 }
+{ "_id" : ObjectId("620c35e9a179d30c118cd4db"), "name" : "Torta de Novia 2 Pisos", "precio" : 4800, "stock" : 100 }
+{ "_id" : ObjectId("620c35e9a179d30c118cd4dc"), "name" : "Torta de Zanahoria", "precio" : 2600, "stock" : 100 }
+{ "_id" : ObjectId("620c35e9a179d30c118cd4dd"), "name" : "Helado Frutos Rojos", "precio" : 4200, "stock" : 100 }
+{ "_id" : ObjectId("620c35e9a179d30c118cd4de"), "name" : "Galleta de Chocolate", "precio" : 900, "stock" : 100 }
+{ "_id" : ObjectId("620c35e9a179d30c118cd4df"), "name" : "Pan de Queso", "precio" : 1450, "stock" : 100 }
+{ "_id" : ObjectId("620c35e9a179d30c118cd4e0"), "name" : "Conos", "precio" : 120, "stock" : 100 }
+{ "_id" : ObjectId("620c3a8ba179d30c118cd4eb"), "name" : "Torta de Banano", "precio" : 870, "stock" : 100 }
+---------Actualzación Stock mayor a 4000
+> db.producto.updateMany({precio:{$gt:4000}},{$set:{stock:0} ,$setOnInsert:{defaultQty:100}},{upsert:true})
+{ "acknowledged" : true, "matchedCount" : 2, "modifiedCount" : 2 }
+> db.producto.find({precio:{$gt:4000}})
+{ "_id" : ObjectId("620c35e9a179d30c118cd4db"), "name" : "Torta de Novia 2 Pisos", "precio" : 4800, "stock" : 0 }
+{ "_id" : ObjectId("620c35e9a179d30c118cd4dd"), "name" : "Helado Frutos Rojos", "precio" : 4200, "stock" : 0 }
+-----------Delete menor a 1000
+> db.producto.deleteMany({precio:{$lt:1000}})
+{ "acknowledged" : true, "deletedCount" : 6 }
+> db.producto.find()
+{ "_id" : ObjectId("620c35e9a179d30c118cd4d9"), "name" : "Torta RedVelvet Grande", "precio" : 3500, "stock" : 100 }
+{ "_id" : ObjectId("620c35e9a179d30c118cd4db"), "name" : "Torta de Novia 2 Pisos", "precio" : 4800, "stock" : 0 }
+{ "_id" : ObjectId("620c35e9a179d30c118cd4dc"), "name" : "Torta de Zanahoria", "precio" : 2600, "stock" : 100 }
+{ "_id" : ObjectId("620c35e9a179d30c118cd4dd"), "name" : "Helado Frutos Rojos", "precio" : 4200, "stock" : 0 }
+{ "_id" : ObjectId("620c35e9a179d30c118cd4df"), "name" : "Pan de Queso", "precio" : 1450, "stock" : 100 }
+--------Creación de Usuario
+> db.createUser({"user": "pepe", "pwd":"asd456", "roles":[{role:"read",db:"ecommerce"}]})
+Successfully added user: {
+        "user" : "pepe",
+        "roles" : [
+                {
+                        "role" : "read",
+                        "db" : "ecommerce"
+                }
+        ]
+}
