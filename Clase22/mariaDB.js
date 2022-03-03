@@ -6,7 +6,7 @@ const db ={
       password: '',
       database: 'backend'
     }
-  } 
+  }
 
 module.exports ={
     db
