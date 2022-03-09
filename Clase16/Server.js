@@ -5,7 +5,7 @@ const io = require('socket.io')(server)
 const {db} =  require('./mariaDB.js');
 const knex = require('knex')(db);
 
-let messages = [
+let messages = [ 
 ];
 
 let messages2 = [
