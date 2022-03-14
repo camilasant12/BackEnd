@@ -1,0 +1,55 @@
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Mi Aplicación Chat con WebSockets</title>
+        <script src="/socket.io/socket.io.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+      </head>
+    <body>
+        <main role="main" class="container my-auto">
+            <div class="row">
+                <div id="login" class="col-lg-4 offset-lg-4 col-md-6 offset-md-3
+                    col-12">
+                    <h2 class="text-center">Bienvenido</h2>
+                   
+            
+                    <form class="form-inline" onsubmit="return addMessage(this)" autocomplete="off">
+                        <div class="form-group">
+                            <label>UserName</label>
+                            <input id="username" name="username"
+                                class="form-control" type="text"
+                                placeholder="UserName">
+                        </div>
+
+                        <div class="form-group">
+                            <label> Contraseña </label>
+                            <input id="password" name="password"
+                                class="form-control" type="password"
+                                placeholder="Contraseña">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary mb-2">
+                            Entrar
+                        </button>
+                        <br>         
+                    </form>
+                    <h2 style="color:crimson;">Cliente</h2>
+                    <div class="table-responsive">
+                        <table class="table table-dark">
+                            <tr style="color: yellow;"> 
+                                <th>Nombre</th> 
+                                <th>Contraseña</th> 
+                            </tr>
+                        </table>
+                        <table id="messages" class="table table-dark">
+                            
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>    
+        <script src="main.js"></script>    
+    </body>
+</html>
